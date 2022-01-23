@@ -4,14 +4,15 @@ NAME		=	client
 
 SRC_DIR		=	src
 SRC		=	$(SRC_DIR)/main.c\
+			$(SRC_DIR)/helper.c\
+			$(SRC_DIR)/mode.c
 
 TEST_DIR	=	tests
 SRC_TEST	=	$(TEST_DIR)/tests_client.c\
 
 OBJ_DIR		=	.obj
 INCLUDE_DIR 	=	include
-LIB_DIR		= 	lib
-LIB 		=	-l my
+LIB 		=	m
 
 CFLAGS		=	-O3 -Wall -Wextra -Wpedantic -Wundef
 CFLAGS		+=	-iquote $(INCLUDE_DIR)
@@ -20,7 +21,7 @@ TEST_FLAGS = -l criterion --coverage -g2
 
 DEBUG_FLAGS = -ggdb -g2 $(CFLAGS)
 
-LDFLAGS =  -L $(LIB_DIR) $(LIB)
+LDFLAGS =  -L $(LIB)
 
 OBJ = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC))
 
@@ -43,33 +44,28 @@ OK_COL=\x1b[32;01m
 ERR_COL=\x1b[31;01m
 WARN_COL=\x1b[33;01m
 
-.PHONY: all libmy $(NAME) debug lean fclean unit_tests tests_run run re
+.PHONY: all $(NAME) debug lean fclean unit_tests tests_run run re
 
 all: $(NAME)
 
-libmy:
-	@ make -C $(LIB_DIR)
-
-$(NAME): libmy $(OBJ)
+$(NAME): $(OBJ)
 	@ echo -e "$(OK_COL){+} Link $@$(NO_COL)"
 	@ $(CC) $(OBJ) $(CFLAGS) -o $(NAME) $(LDFLAGS)
 
-debug: libmy $(OBJ_DEBUG)
+debug: $(OBJ_DEBUG)
 	@ echo -e "$(OK_COL){+} Link $(NAME)_debug$(NO_COL)"
 	@ $(CC) $(OBJ_DEBUG) $(CFLAGS) -o $(NAME)_debug $(LDFLAGS)
 
 clean:
-	@ make clean -C $(LIB_DIR)
 	@ echo -e "$(ERR_COL){-} Remove $(OBJ) $(OBJ_TEST)\
 		$(OBJ_DEBUG)$(NO_COL)"
 	@ rm -rf $(OBJ_DIR) *.gcda *.gcno vgcore*
 
 fclean: clean
-	@ make fclean -C $(LIB_DIR)
 	@ echo -e "$(ERR_COL){-} Remove $(NAME) $(NAME)_debug test$(NO_COL)"
 	@ rm -rf $(NAME) test $(NAME)_debug
 
-unit_tests: fclean libmy $(OBJ) $(OBJ_TEST)
+unit_tests: fclean $(OBJ) $(OBJ_TEST)
 	@ $(CC) -o test $(OBJ_TEST) $(OBJ) $(TEST_FLAGS) $(LDFLAGS)
 
 tests_run: unit_tests
