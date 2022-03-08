@@ -5,21 +5,21 @@ SMART_R00M est un système de gestion de led et d'ambiance lumineuse sans fils q
 
 ## modes
 La lumière sera definie par differents modes
-    - Mode 1:
-        - totalement blanc
-        - idéale pour une ambiance de travail
-    - Mode 2:
-        - couleur definie par l'utilisateur a l'aide des potentiometre
-        - idéal pour mettre une ambiance plus tamisé ou douce a une piéce
-    - Mode 3:
-        - arc en ciel
-        - mouvement de rayon arc en ciel sur la bande
-    - Mode 4: 
-        - ambiance selon le son dans la piéce sur une seule couleur
-        - plus agréable lors de session streaming
-    - Mode 5:
-        - ambiance selon le son de la piéce mais avec une disposition de couleur RGB
-        - pour les soirées entre amis
+- Mode 1:
+    - totalement blanc
+    - idéale pour une ambiance de travail
+- Mode 2:
+    - couleur definie par l'utilisateur a l'aide des potentiometre
+    - idéal pour mettre une ambiance plus tamisé ou douce a une piéce
+- Mode 3:
+    - arc en ciel
+    - mouvement de rayon arc en ciel sur la bande
+- Mode 4: 
+    - ambiance selon le son dans la piéce sur une seule couleur
+    - plus agréable lors de session streaming
+- Mode 5:
+    - ambiance selon le son de la piéce mais avec une disposition de couleur RGB
+    - pour les soirées entre amis
 
 l'utilisateur peut changer de mode grâce au boutons et configurer le mode 2 en maintenant le boutont
 
