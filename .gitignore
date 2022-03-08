@@ -2,3 +2,4 @@ tags
 a.*
 o.*
 .obj/
+.pio
