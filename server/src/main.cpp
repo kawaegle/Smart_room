@@ -1,20 +1,11 @@
 #include "server.hpp"
-#include "client.hpp"
 
 CRGB leds[NB_LED];
 int mode = 1;
 
-static void blink()
+void blink(CRGB leds[])
 {
     leds[0] = CRGB::Purple;
-    FastLED.show(); delay(500);
-    leds[0] = CRGB::Black;
-    FastLED.show(); delay(500);
-}
-
-static void blink_pink()
-{
-    leds[0] = CRGB::Pink;
     FastLED.show(); delay(500);
     leds[0] = CRGB::Black;
     FastLED.show(); delay(500);
@@ -27,7 +18,7 @@ void setup()
     pinMode(STATUS_BUTTON, INPUT);
     create_wifi();
     while (WiFi.softAPgetStationNum() != NB_CLIENT)
-        blink();
+        blink(leds);
     Serial.println(WiFi.softAPIP());
 }
 

@@ -1,5 +1,4 @@
 #include "server.hpp"
-#include "client.hpp"
 
 bool button_clicked = false;
 
