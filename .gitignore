@@ -1,5 +1,4 @@
 tags
-a.*
-o.*
+.ccls*
 .obj/
 .pio
