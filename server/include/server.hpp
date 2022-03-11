@@ -11,6 +11,7 @@
 #define PORT 4444
 
 const int check_delay = 5000;
+const int check_send = 500;
 
 typedef struct led_cmd_s {
   uint8_t mode;
@@ -29,3 +30,4 @@ bool check_connected(bool *client);
 void check_button(int *mode);
 void blink(void);
 void read_packet(bool *client, WiFiUDP UDP);
+void send_packet(bool *client, WiFiUDP UDP, int mode);

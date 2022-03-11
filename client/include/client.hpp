@@ -3,8 +3,10 @@
 #include <ESP8266WiFi.h>
 #include <WiFiUdp.h>
 
-#define NB_LED_CLIENT 144
+#define NB_LED_CLIENT 29 
 #define PIN_LED D5
+#define PORT 4444
+#define MODE_MAX 5
 #define ID 1 // ID of the client for the server
 
 const int check_delay = 5000;
@@ -22,4 +24,12 @@ typedef struct client_msg_s {
 
 void connect_wifi(CRGB leds[]);
 void blink(CRGB leds[]);
+void led_mode(int mode);
 unsigned long send_message(WiFiUDP UDP);
+unsigned long receive_message(WiFiUDP UDP, int *mode);
+
+void white(CRGB leds[]);
+void user_color(CRGB leds[]);
+void rainbow_move(CRGB leds[]);
+void rainbow_sound(CRGB leds[]);
+void HORNY(CRGB leds[]);

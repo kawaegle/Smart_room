@@ -1,15 +1,13 @@
 #include "server.hpp"
 
-IPAddress apIP(10, 10, 10, 1);
-
 const char *SSID = "Smart_R00M_LED";
 const char *PSK = "LED_password";
 
 void create_wifi()
 {
     WiFi.mode(WIFI_AP);
-    WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
     WiFi.softAP(SSID, PSK, 11, true, NB_CLIENT);
+    Serial.print(WiFi.softAPIP());
 }
 
 void reset_client(bool *client)
@@ -32,11 +30,9 @@ bool check_connected(bool *client) {
 void wait_connection(bool *client, WiFiUDP UDP, CRGB led[])
 {
     while(true) {
-        led[0] = CRGB::Yellow; FastLED.show();
-        delay(500);
+        blink();
         read_packet(client, UDP);
-        led[0] = CRGB::Blue; FastLED.show();
-        delay(500);
+        blink();
         if (check_connected(client))
             return;
         delay(500);
@@ -59,5 +55,21 @@ void read_packet(bool *client, WiFiUDP UDP)
         }
         client[msg.client - 1] = true;
         Serial.printf("Client %d is %d\n\r", msg.client , client[msg.client - 1]);
+    }
+}
+
+void send_packet(bool *client, WiFiUDP UDP, int mode)
+{
+    led_cmd_t msg;
+    msg.mode = mode; 
+//    send_data.data = data; 
+    for (int i = 0; i < NB_CLIENT; i++) {
+        IPAddress ip(192, 168 , 4, 2 + i);
+        UDP.beginPacket(ip, 4444);
+        Serial.printf("send %d to", mode);
+        Serial.print(ip);
+        Serial.print("\n\r");
+        UDP.write((char*)&msg, sizeof(led_cmd_t));
+        UDP.endPacket();
     }
 }

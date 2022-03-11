@@ -17,10 +17,26 @@ unsigned long send_message(WiFiUDP UDP) {
     msg.client = ID;
     msg.check = (uint8_t) 77777;
     Serial.println("Sending heartbeat");
-    IPAddress ip(10, 10, 10, 1);
-    UDP.beginPacket(ip, 4444); 
+    IPAddress ip(192, 168, 4, 1);
+    UDP.beginPacket(ip, PORT); 
     int ret = UDP.write((char*)&msg,sizeof(msg));
-    Serial.printf("Returned: %d, also sizeof hbm: %ld \n", ret, sizeof(msg));
     UDP.endPacket();
+    return (millis());
+}
+
+unsigned long receive_message(WiFiUDP UDP, int *mode)
+{
+    led_cmd_t msg;
+    int packetSize = 0;
+    while(true) {
+        packetSize = UDP.parsePacket();
+        if (!packetSize)
+            break;
+        UDP.read((char *)&msg, sizeof(led_cmd_t));
+        if (msg.mode > MODE_MAX) {
+            continue;
+        }
+        *mode = msg.mode;
+    }
     return (millis());
 }
