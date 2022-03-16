@@ -10,7 +10,8 @@
 #define ID 1 // ID of the client for the server
 
 const int check_delay = 5000;
-const int message_interval = 100;
+const int message_delay = 100;
+const int rainbow_delay = 500;
 
 typedef struct led_cmd_s {
     uint8_t mode;
@@ -27,9 +28,16 @@ void blink(CRGB leds[]);
 void led_mode(int mode);
 unsigned long send_message(WiFiUDP UDP);
 unsigned long receive_message(WiFiUDP UDP, int *mode);
+void init_led(int mode);
 
 void white(CRGB leds[]);
 void user_color(CRGB leds[]);
 void rainbow_move(CRGB leds[]);
 void rainbow_sound(CRGB leds[]);
 void HORNY(CRGB leds[]);
+
+void white_init(CRGB leds[]);
+void user_color_init(CRGB leds[]);
+void rainbow_init(CRGB leds[]);
+void HORNY_init(CRGB leds[]);
+
