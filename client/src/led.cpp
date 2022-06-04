@@ -39,7 +39,7 @@ void rainbow_sound(CRGB leds[])
     return;
 }
 
-void HORNY(CRGB leds[])
+void HORNY_mode(CRGB leds[])
 {
     for (int i = 0; i < NB_LED_CLIENT; i++)
         leds[i] = CRGB::HotPink;

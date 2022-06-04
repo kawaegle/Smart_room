@@ -13,6 +13,7 @@ int old_mode = 0;
 void setup(){
     Serial.begin(115200);
     FastLED.addLeds<NEOPIXEL, PIN_LED>(leds, NB_LED_CLIENT);
+    FastLED.setBrightness(25);
     connect_wifi(leds);
     UDP.begin(PORT);
     last_send = send_message(UDP);
@@ -36,55 +37,55 @@ void loop()
 void init_led(int mode)
 {
     switch (mode) {
-        case 1:
+        case WHITE:
             Serial.print("White init\n\r");
             white_init(leds);
             break;
-        case 2:
+        case USER:
             Serial.print("USER DEFINED init\n\r");
             user_color_init(leds);
             break;
-        case 3:
+        case RAINBOW:
             Serial.print("rainbow move init\n\r");
             rainbow_init(leds);
             break;
-        case 4:
+        case RAINBOW_SOUND:
             Serial.print("rainbow Sound init\n\r");
             rainbow_init(leds);
             break;
-        case 5:
+        case HORNY:
             Serial.print("HORNY mode init\n\r");
             HORNY_init(leds);
             break;
         default:
             break;
-    } 
+    }
 }
 
 void led_mode(int mode)
 {
     switch (mode) {
-        case 1:
+        case WHITE:
             Serial.print("White\n\r");
             white(leds);
             break;
-        case 2:
+        case USER:
             Serial.print("USER DEFINED\n\r");
             user_color(leds);
             break;
-        case 3:
+        case RAINBOW:
             Serial.print("rainbow move\n\r");
             rainbow_move(leds);
             break;
-        case 4:
+        case RAINBOW_SOUND:
             Serial.print("rainbow Sound\n\r");
             rainbow_sound(leds);
             break;
-        case 5:
+        case HORNY:
             Serial.print("HORNY mode\n\r");
-            HORNY(leds);
+            HORNY_mode(leds);
             break;
         default:
             break;
-    } 
+    }
 }
