@@ -1,27 +1,28 @@
 [english version](english.md)
 
 # SMART_R00M led
-SMART_R00M est un système de gestion de led et d'ambiance lumineuse sans fils qui ce base sur différents modes adaptable au choix grâce à un boutons et à 3 potentiometre pour changer le RGB 
+SMART_R00M est un système de gestion de led et d'ambiance lumineuse sans fils qui ce base sur différents modes adaptable au choix grâce à un boutons et à 3 potentiometre pour changer le RGB
 
 ## modes
 La lumière sera definie par differents modes
-- Mode 1:
+
+1. Mode 1:
     - totalement blanc
     - idéale pour une ambiance de travail
-- Mode 2:
+2. Mode 2:
     - couleur definie par l'utilisateur a l'aide des potentiometre
     - idéal pour mettre une ambiance plus tamisé ou douce a une piéce
-- Mode 3:
+3. Mode 3:
     - arc en ciel
     - mouvement de rayon arc en ciel sur la bande
-- Mode 4: 
+4. Mode 4: 
     - ambiance selon le son dans la piéce sur une seule couleur
     - plus agréable lors de session streaming
-- Mode 5:
+5. Mode 5:
     - ambiance selon le son de la piéce mais avec une disposition de couleur RGB
     - pour les soirées entre amis
 
-l'utilisateur peut changer de mode grâce au boutons et configurer le mode 2 en maintenant le boutont
+l'utilisateur peut changer de mode grâce au boutons et configurer le mode 2 en maintenant le bouton
 
 # Materiel
 
@@ -38,8 +39,5 @@ l'utilisateur peut changer de mode grâce au boutons et configurer le mode 2 en 
 | 1               | [chargeur usbC](https://fr.aliexpress.com/item/32798858483.html?gatewayAdapt=glo2fra&spm=a2g0o.9042311.0.0.27426c37jvYyF2) |  charger la batterie |
 | 1               | [alimentation jack](https://fr.aliexpress.com/item/4000648876487.html?gatewayAdapt=glo2fra&spm=a2g0o.9042311.0.0.340c6c37mzKLhG) | alimenter le client |
 
-
-# resources
+# ressources
 Dans l'idée que ceci est un projet, je me dois de garder une trace des eventuels resources qui m'ont aider a avancer dans le code ou dans la comprehension des probleme rencontrer.
-
-
