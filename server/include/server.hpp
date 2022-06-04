@@ -23,6 +23,14 @@ typedef struct client_msg_s {
     int8_t check;
 } client_msg_t;
 
+typedef enum LED_MODE_e {
+    WHITE = 1,
+    USER,
+    RAINBOW,
+    RAINBOW_SOUND,
+    HORNY
+} LED_MODE;
+
 void create_wifi(void);
 void reset_client(bool *client);
 void wait_connection(bool *client, WiFiUDP UDP, CRGB led[]);

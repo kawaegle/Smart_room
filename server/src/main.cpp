@@ -46,23 +46,23 @@ void loop()
         Serial.printf("Mode is %d\n\r", mode);
         if (old_mode != mode) {
             switch (mode) {
-                case 1:
+                case WHITE:
                     leds[0] = CRGB::WhiteSmoke; FastLED.show();
                     send_packet(client_connected, UDP, mode);
                     break;
-                case 2:
+                case USER:
                     leds[0] = CRGB::BlueViolet; FastLED.show();
                     send_packet(client_connected, UDP, mode);
                     break;
-                case 3:
+                case RAINBOW:
                     leds[0] = CRGB::Red; FastLED.show();
                     send_packet(client_connected, UDP, mode);
-                    break;    
-                case 4:
+                    break;
+                case RAINBOW_SOUND:
                     leds[0] = CRGB::OrangeRed; FastLED.show();
                     send_packet(client_connected, UDP, mode);
                     break;
-                case 5:
+                case HORNY:
                     leds[0] = CRGB::Yellow; FastLED.show();
                     send_packet(client_connected, UDP, mode);
                     break;
